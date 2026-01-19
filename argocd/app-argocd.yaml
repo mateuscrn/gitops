@@ -17,3 +17,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
+  syncPolicy:
+    syncOptions: # Opções de sincronização adicionais. Exclui o erro: apiextensions.k8s.io/v1/CustomResourceDefinition:applicationsets.argoproj.io
+      - ServerSideApply=true # Utiliza o Server-Side Apply para aplicar as mudanças no cluster Kubernetes.
+      - CreateNamespace=true # Cria o namespace de destino se ele não existir.
