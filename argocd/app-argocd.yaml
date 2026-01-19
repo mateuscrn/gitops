@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/mateuscrn/gitops.git
+    targetRevision: HEAD
+    # directory: # Diretório onde estão os manifests
+    # recurse: true # Habilita a busca recursiva por manifests dentro do diretório. Útil quando há subdiretórios.
+    # exclude: "nginx/*" # Padrões para excluir arquivos ou diretórios específicos
+    # include: "nginx/*" # Padrões para incluir apenas arquivos ou diretórios específicos
+    # include: "{nginx/*,webcolor/*}" # Padrões para incluir apenas arquivos ou diretórios específicos
+    path: argocd
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
