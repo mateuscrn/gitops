@@ -8,8 +8,8 @@ spec:
   source:
     repoURL: https://github.com/mateuscrn/gitops.git
     targetRevision: HEAD
-    # directory: # Diretório onde estão os manifests
-    # recurse: true # Habilita a busca recursiva por manifests dentro do diretório. Útil quando há subdiretórios.
+    directory: # Diretório onde estão os manifests
+      recurse: true # Habilita a busca recursiva por manifests dentro do diretório. Útil quando há subdiretórios.
     # exclude: "nginx/*" # Padrões para excluir arquivos ou diretórios específicos
     # include: "nginx/*" # Padrões para incluir apenas arquivos ou diretórios específicos
     # include: "{nginx/*,webcolor/*}" # Padrões para incluir apenas arquivos ou diretórios específicos
