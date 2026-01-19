@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: webcolor
+  namespace: argocd
+  labels:
+    curso: gitops
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/mateuscrn/web-page-deploy.git
+    targetRevision: HEAD
+    directory: # Diretório onde estão os manifests
+      recurse: true # Habilita a busca recursiva por manifests dentro do diretório. Útil quando há subdiretórios.
+      # exclude: "nginx/*" # Padrões para excluir arquivos ou diretórios específicos
+      # include: "nginx/*" # Padrões para incluir apenas arquivos ou diretórios específicos
+      include: "{nginx/*,webcolor/*}" # Padrões para incluir apenas arquivos ou diretórios específicos
+    path: k8s
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: webcolor
+  info:
+    - name: "Projeto"
+      value: "Curso de gitops"
